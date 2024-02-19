@@ -28,7 +28,7 @@ local plugins_table = {
   {'caenrique/swap-buffers.nvim', event = "VeryLazy"},
   {'unblevable/quick-scope', keys = {'f', mode = 'n'}},
   {'yssl/QFEnter', event = "VeryLazy"},
-  {'kyazdani42/nvim-tree.lua', layz = false},
+  {'kyazdani42/nvim-tree.lua', lazy = false},
   {'junegunn/vim-easy-align', event = "VeryLazy"},
   {'majutsushi/tagbar', cmd = {'TagbarToggle'}},
   {'tpope/vim-fugitive', event = "VeryLazy"},

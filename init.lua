@@ -60,10 +60,17 @@ vim.keymap.set('', '<Left>', '<C-W>2<')
 vim.keymap.set('', '<Right>', '<C-W>2>')
 
 -- remap ctrl+hkjl to jump windows in normal mode
-vim.keymap.set('n', '<C-h>', '<C-W>h')
-vim.keymap.set('n', '<C-j>', '<C-W>j')
-vim.keymap.set('n', '<C-k>', '<C-W>k')
-vim.keymap.set('n', '<C-l>', '<C-W>l')
+vim.keymap.set('n', 'n', 'h')
+vim.keymap.set('n', 'e', 'j')
+vim.keymap.set('n', 'u', 'k')
+vim.keymap.set('n', 'i', 'l')
+vim.keymap.set('n', 'U', '5k')
+vim.keymap.set('n', 'E', '5j')
+vim.keymap.set('n', 'N', '')
+vim.keymap.set('n', 'I', '$')
+vim.keymap.set('n', 'l', 'u')
+-- 
+vim.keymap.set('n', 'k', 'i')
 
 -- quick change from horizontal to vert split
 -- map <leader>th <C-w>t<C-w>H
@@ -75,7 +82,13 @@ vim.keymap.set('', '<leader>tk', '<C-w>t<C-w>K', {noremap=true, silent=true})
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Q is a silly place
-vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "Q", ":wq<CR>")
+
+-- S is save files
+vim.keymap.set("n", "S", ":w<CR>")
+
+-- tt is nvim rrrttree opnen
+vim.keymap.set('', 'tt', ':NvimTreeToggle<CR>')
 
 -- fn to automatically set makeprg (required for large c++ and c projects)
 vim.cmd([[
@@ -116,7 +129,7 @@ require('config')
 -- colorscheme solarized
 vim.cmd([[
 set mouse=
-set background=light
+set background=dark
 set termguicolors
 ]])
 
@@ -169,4 +182,18 @@ function! DelWhitespace()
     :%s/\s\+$//g
 endfunction
 command! Unfuck execute DelWhitespace()
+
+" custom command add by jason lee
+" function! helloworld#complete(ArgLead, CmdLine, CursorPos) abort
+"  return join(['hellolily', 'hellojeky', 'hellofoo', 'world']
+"    \ "\n")
+"endfunction
+command! -nargs=* -complete=custom,helloworld#complete HelloWorld call helloworld#test()
+
+" custom command add by jason lee
+function! Hahaha()
+  echom "helloworld!"
+endfunction
+command! Hahaha execute Hahaha()
+
 ]])
